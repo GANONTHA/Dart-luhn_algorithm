@@ -1,0 +1,30 @@
+void test(String number) {
+
+  List<int> liste = [];
+  int total = 0;
+  String newNumber = reverseUsingSplitAndJoin(number);
+  newNumber.runes.forEach((element) { 
+    var ch = String.fromCharCode(element);
+    liste.add(int.parse(ch));
+
+  });
+  liste.asMap().forEach((index, value) { 
+    if (index % 2 != 0) {
+      value = value * 2;
+        if(value >= 10) {
+          value = value - 9;
+        }
+      }
+      total = total + value;
+    });
+  if (total % 10 ==0) {
+      print("This a valid Credit Card number");
+  } else {
+    print("You have entered an invalid Credit card number");
+  }
+}
+String reverseUsingSplitAndJoin(String text) {
+    final chars = text.split('');
+  
+    return chars.reversed.join('');
+  }
